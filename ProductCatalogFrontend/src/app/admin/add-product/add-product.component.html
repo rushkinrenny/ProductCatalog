@@ -1,0 +1,192 @@
+<app-header></app-header>
+<div class="container-fluid mt-1 mb-1">
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary me-3" routerLink="/admin/adminView">
+      Show Products
+    </button>
+  </div>
+</div>
+<div class="userLoginBackground">
+  <div class="container text-center">
+    <!-- <img src="../../assets/user.png" style="width:100px" alt="user"> -->
+    <h3 class="fs-4 fw-bold">Add Product</h3>
+  </div>
+  <div class="container-fluid mt-1">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <form [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+          <div class="row">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-4">
+                  <label class="fs-4 fw-bold">Code</label>
+                  <span style="color: red" class="mx-1">*</span>
+                </div>
+                <div class="col-6">
+                  <input
+                    type="text"
+                    formControlName="productcode"
+                    class="form-control"
+                    placeholder="code*"
+                  />
+                  <span
+                    style="color: red"
+                    *ngIf="
+                      productcode && productcode.invalid && productcode.touched
+                    "
+                    >Required</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-1">
+              <div class="row">
+                <div class="col-4">
+                  <label class="fs-4 fw-bold">Name</label>
+                  <span style="color: red" class="mx-1">*</span>
+                </div>
+                <div class="col-6">
+                  <input
+                    type="text"
+                    formControlName="productname"
+                    class="form-control"
+                    placeholder="name*"
+                  />
+                  <span
+                    style="color: red"
+                    *ngIf="
+                      productname && productname.invalid && productname.touched
+                    "
+                    >Required</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mt-1">
+              <div class="row">
+                <div class="col-4">
+                  <label class="fs-4 fw-bold">Brand</label>
+                  <span style="color: red" class="mx-1">*</span>
+                </div>
+                <div class="col-6">
+                  <input
+                    type="text"
+                    formControlName="productbrand"
+                    class="form-control"
+                    placeholder="brand*"
+                  />
+                  <span
+                    style="color: red"
+                    *ngIf="
+                      productbrand &&
+                      productbrand.invalid &&
+                      productbrand.touched
+                    "
+                    >Required</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mt-1">
+              <div class="row">
+                <div class="col-4">
+                  <label class="fs-4 fw-bold">Details </label>
+                  <span style="color: red" class="mx-1">*</span>
+                </div>
+                <div class="col-6">
+                  <input
+                    type="text"
+                    formControlName="productdetails"
+                    class="form-control"
+                    placeholder="details*"
+                  />
+                  <span
+                    style="color: red"
+                    *ngIf="
+                      productdetails &&
+                      productdetails.invalid &&
+                      productdetails.touched
+                    "
+                    >Required</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mt-1">
+              <div class="row">
+                <div class="col-4">
+                  <label class="fs-4 fw-bold">Price </label>
+                  <span style="color: red" class="mx-1">*</span>
+                </div>
+                <div class="col-6">
+                  <input
+                    type="number"
+                    formControlName="productprice"
+                    class="form-control"
+                    placeholder="price*"
+                  />
+                  <span
+                    style="color: red"
+                    *ngIf="
+                      productprice &&
+                      productprice.invalid &&
+                      productprice.touched
+                    "
+                    >Required</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mt-1">
+              <div class="row">
+                <div class="col-4">
+                  <label class="fs-4 fw-bold">Image </label>
+                  <span style="color: red" class="mx-1">*</span>
+                </div>
+                <div class="col-6">
+                  <input
+                    type="file"
+                    formControlName="productimage"
+                    class="form-control"
+                    placeholder="image*"
+                    (change)="onFileChanged($event)"
+                  />
+                  <span
+                    style="color: red"
+                    *ngIf="
+                      productimage &&
+                      productimage.invalid &&
+                      productimage.touched
+                    "
+                    >Required</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-1">
+              <div class="row">
+                <div class="col-4"></div>
+                <div class="col-7">
+                  <button
+                    [disabled]="addProductForm.invalid"
+                    class="btn btn-primary btn-md"
+                    type="submit"
+                  >
+                    submit
+                  </button>
+                  <button class="btn btn-danger btn-md mx-3" type="reset">
+                    Clear
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

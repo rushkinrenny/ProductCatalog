@@ -1,0 +1,13 @@
+h1{
+    font-weight: bolder;
+    font-size: 5em;
+}
+
+@media screen and (max-width: 380px) {
+    h1{
+        font-weight:bold;
+        font-size: 3em;
+    }
+  }
+
+  

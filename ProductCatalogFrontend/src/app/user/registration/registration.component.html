@@ -1,0 +1,193 @@
+<app-header></app-header>
+<div class="registrationBackground">
+  <div class="container-fluid text-center">
+    <img
+      class="mt-2 mb-2"
+      src="../../assets/producticon_register.png"
+      style="width: 100px"
+      alt=""
+    />
+    <h6 class="fs-6 fw-bold">Register with your email and password</h6>
+  </div>
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <form [formGroup]="registrationForm" (ngSubmit)="userRegister()">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-6">
+                <label class="fs-5 fw-bold">Email</label>
+                <span style="color: red" class="mx-1">*</span>
+              </div>
+              <div class="col-6">
+                <input
+                  type="email"
+                  formControlName="email"
+                  id="email"
+                  min="1"
+                  class="form-control"
+                  placeholder="email *"
+                />
+                <span
+                  style="color: red"
+                  *ngIf="f['email'] && f['email'].invalid && f['email'].touched"
+                  >Invalid</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group mt-3">
+            <div class="row">
+              <div class="col-6">
+                <label class="fs-5 fw-bold">First Name</label>
+                <span style="color: red" class="mx-1">*</span>
+              </div>
+              <div class="col-6">
+                <input
+                  type="text"
+                  formControlName="firstName"
+                  class="form-control"
+                  placeholder="first name *"
+                  required
+                />
+                <span
+                  style="color: red"
+                  *ngIf="
+                    f['firstName'] &&
+                    f['firstName'].invalid &&
+                    f['firstName'].touched
+                  "
+                  >Required</span
+                >
+              </div>
+            </div>
+
+            <div class="form-group mt-3">
+              <div class="row">
+                <div class="col-6">
+                  <label class="fs-5 fw-bold">Last Name</label>
+                  <span style="color: red" class="mx-1">*</span>
+                </div>
+                <div class="col-6">
+                  <input
+                    type="text"
+                    formControlName="lastName"
+                    class="form-control"
+                    placeholder="last name *"
+                    required
+                  />
+                  <span
+                    style="color: red"
+                    *ngIf="
+                      f['lastName'] &&
+                      f['lastName'].invalid &&
+                      f['lastName'].touched
+                    "
+                    >Required</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mt-3">
+              <div class="row">
+                <div class="col-6">
+                  <label class="fs-5 fw-bold">Password</label>
+                  <span style="color: red" class="mx-1">*</span>
+                </div>
+                <div class="col-6">
+                  <input
+                    type="password"
+                    formControlName="password"
+                    class="form-control"
+                    placeholder="password *"
+                    required
+                  />
+                  <span
+                    style="color: red"
+                    *ngIf="
+                      f['password'] &&
+                      f['password'].invalid &&
+                      f['password'].touched
+                    "
+                    >Min len of password is 8 and contains a letter, uppercase
+                    letter, lowercase letter, a number, a specail charater</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <div class="row">
+                <div class="col-6">
+                  <label class="fs-5 fw-bold">Confirm Password</label>
+                  <span style="color: red" class="mx-1">*</span>
+                </div>
+                <div class="col-6">
+                  <input
+                    type="password"
+                    formControlName="confirmPassword"
+                    class="form-control"
+                    placeholder="confirm password *"
+                    required
+                  />
+                  <div
+                    *ngIf="
+                      f['confirmPassword'] &&
+                      f['confirmPassword'].invalid &&
+                      f['confirmPassword'].touched
+                    "
+                  >
+                    <span
+                      style="color: red"
+                      *ngIf="f['confirmPassword'].errors['required']"
+                      >Password is Required</span
+                    >
+                    <span
+                      style="color: red"
+                      *ngIf="
+                      f['confirmPassword'].errors?.['confirmedValidator'] 
+                    "
+                      >Password and Confirm Password must be match</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6"></div>
+            <div class="col-6 mt-2 d-flex justify-content-start">
+              <button
+                [disabled]="registrationForm.invalid"
+                id="submit"
+                class="btn btn-primary btn-md mx-2"
+                type="submit"
+              >
+                Submit
+              </button>
+              <button
+                class="btn btn-danger btn-md clear"
+                type="reset"
+                id="reset"
+              >
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6"></div>
+            <div class="col-6 mt-2 d-flex justify-content-start">
+              <a
+                class="fw-bold"
+                style="text-decoration: none; color: blue"
+                routerLink="/userlogin"
+                >Have an account already?</a
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

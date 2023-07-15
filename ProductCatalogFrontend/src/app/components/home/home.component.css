@@ -1,0 +1,32 @@
+/* .homeBackground {
+    background-image: url(../../assets/homeBG.jpg);
+    background-repeat: no-repeat;
+    background-size: cover ;
+    background-color: #000;
+  } */
+
+  .example-card {
+    max-width: 300px;
+    margin:auto ;
+  }
+  .mat-card{
+    display:flex;
+    flex-direction: column;
+  }
+  .mat-card-header {
+    flex-shrink: 0;
+  }
+  img{
+  width: 100%;
+  margin: auto;
+  }
+  .mat-card-content{
+    flex-grow: 1;
+    overflow: auto;
+  }
+
+  .disableButton[disabled]{
+    pointer-events: none;
+  }
+ 
+  

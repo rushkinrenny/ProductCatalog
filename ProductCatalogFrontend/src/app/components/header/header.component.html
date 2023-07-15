@@ -1,0 +1,48 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a routerLink="/" style="text-decoration: none"
+      ><h3 style="color: white" class="fw-bold" (click)="logout()">
+        Product Catalog
+      </h3></a
+    >
+    <div class="d-flex">
+      <button
+        *ngIf="!isLoggedIn"
+        class="btn btn-outline-secondary"
+        type="submit"
+        routerLink="/registration"
+      >
+        Registration
+      </button>
+      <button
+        *ngIf="!isLoggedIn"
+        class="btn btn-outline-success mx-3"
+        type="submit"
+        routerLink="/adminlogin"
+      >
+        Admin Login
+      </button>
+      <button
+        *ngIf="!isLoggedIn"
+        class="btn btn-outline-success me-3"
+        type="submit"
+        routerLink="/userlogin"
+      >
+        User Login
+      </button>
+
+      <!-- show after login -->
+      <h6 *ngIf="isLoggedIn" class="mt-2" style="color: white">
+        Hi, {{ name }} ({{ role }})
+      </h6>
+      <button
+        *ngIf="isLoggedIn"
+        class="btn btn-danger mx-3"
+        type="submit"
+        (click)="logout()"
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+</nav>

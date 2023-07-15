@@ -1,0 +1,77 @@
+<!-- <div class="homeBackground"> -->
+<app-header></app-header>
+
+<div class="container-fluid mt-3 mb-3">
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary me-3" routerLink="/addproduct">
+      Add Products
+    </button>
+  </div>
+</div>
+
+<div class="container-fluid justify-content-center">
+  <h2 class="text-center">Available Products</h2>
+  <div class="row">
+    <!-- check user login or not in ngIg -->
+    <div *ngIf="productBrands.size > 0" class="col-md-2">
+      <mat-form-field>
+        <mat-select
+          placeholder="Brands"
+          [(value)]="selectedBrand"
+          [(ngModel)]="selectedBrand"
+          (ngModelChange)="onSelectedBrand($event)"
+        >
+          <mat-option [value]="null">None</mat-option>
+          <mat-option
+            *ngFor="let productBrand of productBrands"
+            [value]="productBrand"
+          >
+            {{ productBrand }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- add this => [ngClass]="{ 'col-lg-4': true }" if user is not loggin -->
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let product of productList">
+          <mat-card class="example-card mb-3">
+            <mat-card-header>
+              <mat-card-title>{{ product.productName }}</mat-card-title>
+              <mat-card-subtitle>{{ product.productCode }}</mat-card-subtitle>
+            </mat-card-header>
+            <img
+              mat-card-image
+              [src]="'data:image/jpg;base64,' + product.image"
+              height="200"
+              width="200"
+            />
+            <mat-card-content class="mt-3">
+              <h5>{{ product.productBrand }}</h5>
+              <h6>No. of Serviceability : {{ product.noOfServiceability }}</h6>
+            </mat-card-content>
+            <mat-card-actions>
+              <!-- disable if user is not login -->
+              <button
+                mat-raised-button
+                color="accent"
+                routerLink="/showProductDetails/{{ product.productCode }}"
+                routerLinkActive="router-link-active"
+              >
+                View Details
+              </button>
+              <button
+                mat-raised-button
+                color="accent"
+                routerLink="addServiceability/{{ product.productCode }}"
+                routerLinkActive="router-link-active"
+              >
+                Add Serviceability
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

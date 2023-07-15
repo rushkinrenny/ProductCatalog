@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div class="container mt-5">
+  <mat-card>
+    <div class="row">
+      <div class="col-md-6 col-lg-6">
+        <img
+          class="productImage"
+          mat-card-image
+          [src]="'data:image/jpg;base64,' + product.image"
+          height="400px"
+          width="400px"
+        />
+      </div>
+      <div class="col-md-6 col-lg-6 showProductBackground">
+        <div class="productDetails">
+          <h2>{{ product.productName }}</h2>
+          <h3>Rs. {{ product.productPrice | currency: "INR" }}</h3>
+          <h4>{{ product.productBrand }}</h4>
+          <h4>{{ product.productDetails }}</h4>
+        </div>
+        <div class="deliverable mt-5">
+          <form [formGroup]="deliverableForm" (ngSubmit)="checkServiceabiliy()">
+            <mat-form-field class="example-full-width">
+              <mat-label>pincode</mat-label>
+              <input
+                matInput
+                type="number"
+                formControlName="pincode"
+                placeholder="i.e. 110093"
+              />
+            </mat-form-field>
+            <button
+              [disabled]="deliverableForm.invalid"
+              class="btn btn-primary btn-sm mx-5"
+              type="submit"
+            >
+              Search delivery
+            </button>
+          </form>
+          <div *ngIf="isAvailable > 0">
+            <span *ngIf="isAvailable === 1" style="color: green"
+              >Expected Delivery day on
+              {{
+                getDeliveryDate(serviceability.expectedDeliveryTime)
+                  | date: "longDate"
+              }}
+            </span>
+            <span *ngIf="isAvailable === 2" style="color: red"
+              >Not Deliverable to your location
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
